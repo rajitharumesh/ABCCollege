@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "cmScCjm9XG/qChBSU6mn/MsYWMj00SHl5rzfmS1x5bXk/L5yryWCfhy3bKXIb2o7GSgY4PIsLwkssroH7xPhxQ==",
+  "dgSpecHash": "VI2mjZ208zqDt/pYR7+y9N17KmJXjyGhhDK1X7sqV/S27BX6sKvvxNIalEhctS+Sb81O8/nXnnFysjJMVfV1GA==",
   "success": true,
-  "projectFilePath": "D:\\Rajitha\\Personal\\workspace\\magnifinance\\magnifinance\\Infrastructure\\Infrastructure.csproj",
+  "projectFilePath": "D:\\Rajitha\\Personal\\workspace\\ABCCollage\\Infrastructure\\Infrastructure.csproj",
   "expectedPackageFiles": [
     "D:\\Users\\gtfs.maldeni\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "D:\\Users\\gtfs.maldeni\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

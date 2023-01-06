@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Rajitha\\Personal\\workspace\\magnifinance\\magnifinance\\Domain\\Domain.csproj",
+      "projectUniqueName": "D:\\Rajitha\\Personal\\workspace\\ABCCollage\\Domain\\Domain.csproj",
       "projectName": "Domain",
-      "projectPath": "D:\\Rajitha\\Personal\\workspace\\magnifinance\\magnifinance\\Domain\\Domain.csproj",
+      "projectPath": "D:\\Rajitha\\Personal\\workspace\\ABCCollage\\Domain\\Domain.csproj",
       "packagesPath": "D:\\Users\\gtfs.maldeni\\.nuget\\packages\\",
-      "outputPath": "D:\\Rajitha\\Personal\\workspace\\magnifinance\\magnifinance\\Domain\\obj\\",
+      "outputPath": "D:\\Rajitha\\Personal\\workspace\\ABCCollage\\Domain\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "D:\\Users\\gtfs.maldeni\\AppData\\Roaming\\NuGet\\NuGet.Config",

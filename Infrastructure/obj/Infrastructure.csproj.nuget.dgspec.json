@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Rajitha\\Personal\\workspace\\magnifinance\\magnifinance\\Infrastructure\\Infrastructure.csproj": {}
+    "D:\\Rajitha\\Personal\\workspace\\ABCCollage\\Infrastructure\\Infrastructure.csproj": {}
   },
   "projects": {
-    "D:\\Rajitha\\Personal\\workspace\\magnifinance\\magnifinance\\Domain\\Domain.csproj": {
+    "D:\\Rajitha\\Personal\\workspace\\ABCCollage\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Rajitha\\Personal\\workspace\\magnifinance\\magnifinance\\Domain\\Domain.csproj",
+        "projectUniqueName": "D:\\Rajitha\\Personal\\workspace\\ABCCollage\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "D:\\Rajitha\\Personal\\workspace\\magnifinance\\magnifinance\\Domain\\Domain.csproj",
+        "projectPath": "D:\\Rajitha\\Personal\\workspace\\ABCCollage\\Domain\\Domain.csproj",
         "packagesPath": "D:\\Users\\gtfs.maldeni\\.nuget\\packages\\",
-        "outputPath": "D:\\Rajitha\\Personal\\workspace\\magnifinance\\magnifinance\\Domain\\obj\\",
+        "outputPath": "D:\\Rajitha\\Personal\\workspace\\ABCCollage\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "D:\\Users\\gtfs.maldeni\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -59,14 +59,14 @@
         }
       }
     },
-    "D:\\Rajitha\\Personal\\workspace\\magnifinance\\magnifinance\\Infrastructure\\Infrastructure.csproj": {
+    "D:\\Rajitha\\Personal\\workspace\\ABCCollage\\Infrastructure\\Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Rajitha\\Personal\\workspace\\magnifinance\\magnifinance\\Infrastructure\\Infrastructure.csproj",
+        "projectUniqueName": "D:\\Rajitha\\Personal\\workspace\\ABCCollage\\Infrastructure\\Infrastructure.csproj",
         "projectName": "Infrastructure",
-        "projectPath": "D:\\Rajitha\\Personal\\workspace\\magnifinance\\magnifinance\\Infrastructure\\Infrastructure.csproj",
+        "projectPath": "D:\\Rajitha\\Personal\\workspace\\ABCCollage\\Infrastructure\\Infrastructure.csproj",
         "packagesPath": "D:\\Users\\gtfs.maldeni\\.nuget\\packages\\",
-        "outputPath": "D:\\Rajitha\\Personal\\workspace\\magnifinance\\magnifinance\\Infrastructure\\obj\\",
+        "outputPath": "D:\\Rajitha\\Personal\\workspace\\ABCCollage\\Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "D:\\Users\\gtfs.maldeni\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -83,8 +83,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\Rajitha\\Personal\\workspace\\magnifinance\\magnifinance\\Domain\\Domain.csproj": {
-                "projectPath": "D:\\Rajitha\\Personal\\workspace\\magnifinance\\magnifinance\\Domain\\Domain.csproj"
+              "D:\\Rajitha\\Personal\\workspace\\ABCCollage\\Domain\\Domain.csproj": {
+                "projectPath": "D:\\Rajitha\\Personal\\workspace\\ABCCollage\\Domain\\Domain.csproj"
               }
             }
           }

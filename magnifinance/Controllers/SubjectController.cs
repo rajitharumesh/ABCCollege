@@ -31,7 +31,7 @@ namespace magnifinance.Controllers
             await _subjectService.AddSubject(subject);
         }
 
-        [HttpPost]
+        [HttpPut]
         public async Task UpdateSubject([FromBody] SubjectDto subject)
         {
             await _subjectService.UpdateSubject(subject);

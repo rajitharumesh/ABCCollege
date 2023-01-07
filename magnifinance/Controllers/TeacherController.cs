@@ -32,7 +32,7 @@ namespace magnifinance.Controllers
             await _teacherService.AddTeacher(teacher);
         }
 
-        [HttpPost]
+        [HttpPut]
         public async Task UpdateTeacher([FromBody] TeacherDto dto)
         {
             await _teacherService.UpdateTeacher(dto);

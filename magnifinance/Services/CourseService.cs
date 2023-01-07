@@ -28,5 +28,32 @@ namespace magnifinance.Services
 
         public async Task<IEnumerable<Course>> GetAll()
             => await _unitOfWork.CourseRepository.GetAllAsync();
+
+        public async Task UpdateCourse(CourseDto dto)
+        {
+            var teacher = new Course
+            {
+                ID = dto.ID,
+                Description=dto.Description,
+                Title=dto.Title,
+            };
+
+            _unitOfWork.CourseRepository.Update(teacher);
+            await _unitOfWork.CommitAsync();
+        }
+
+        public async Task DeleteCourse(CourseDto dto)
+        {
+            var teacher = new Course
+            {
+                ID = dto.ID,
+                Description = dto.Description,
+                Title = dto.Title,
+            };
+
+            _unitOfWork.CourseRepository.Remove(teacher);
+            await _unitOfWork.CommitAsync();
+        }
+
     }
 }

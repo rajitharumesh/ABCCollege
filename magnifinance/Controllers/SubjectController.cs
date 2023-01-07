@@ -25,11 +25,16 @@ namespace magnifinance.Controllers
         }
 
 
-
         [HttpPost]
         public async Task AddSubject([FromBody] SubjectDto subject)
         {
             await _subjectService.AddSubject(subject);
+        }
+
+        [HttpPost]
+        public async Task UpdateSubject([FromBody] SubjectDto subject)
+        {
+            await _subjectService.UpdateSubject(subject);
         }
     }
 }

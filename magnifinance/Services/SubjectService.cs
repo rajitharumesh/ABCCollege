@@ -18,7 +18,7 @@ namespace magnifinance.Services
             var subject = new Subject
             {
                 Description = subjectDto.Description,
-                Name=subjectDto.Name,
+                Name = subjectDto.Name,
             };
 
             _unitOfWork.SubjecttRepository.Add(subject);
@@ -27,5 +27,31 @@ namespace magnifinance.Services
 
         public async Task<IEnumerable<Subject>> GetAll()
             => await _unitOfWork.SubjecttRepository.GetAllAsync();
+
+        public async Task UpdateSubject(SubjectDto subjectDto)
+        {
+            var subject = new Subject
+            {
+                ID=subjectDto.ID,
+                Description = subjectDto.Description,
+                Name = subjectDto.Name,
+            };
+
+            _unitOfWork.SubjecttRepository.Update(subject);
+            await _unitOfWork.CommitAsync();
+        }
+
+        public async Task DeleteSubject(SubjectDto subjectDto)
+        {
+            var subject = new Subject
+            {
+                ID = subjectDto.ID,
+                Description = subjectDto.Description,
+                Name = subjectDto.Name,
+            };
+
+            _unitOfWork.SubjecttRepository.Remove(subject);
+            await _unitOfWork.CommitAsync();
+        }
     }
 }

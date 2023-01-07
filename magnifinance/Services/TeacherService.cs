@@ -29,5 +29,35 @@ namespace magnifinance.Services
 
         public async Task<IEnumerable<Teacher>> GetAll()
             => await _unitOfWork.TeacherRepository.GetAllAsync();
+
+        public async Task UpdateTeacher(TeacherDto dto)
+        {
+            var teacher = new Teacher
+            {
+                ID = dto.ID,
+                FirstName = dto.FirstName,
+                LastName=dto.LastName,
+                BirthDate=dto.BirthDate,
+                Salary=dto.Salary,
+            };
+
+            _unitOfWork.TeacherRepository.Update(teacher);
+            await _unitOfWork.CommitAsync();
+        }
+
+        public async Task DeleteTeacher(TeacherDto dto)
+        {
+            var teacher = new Teacher
+            {
+                ID = dto.ID,
+                FirstName = dto.FirstName,
+                LastName = dto.LastName,
+                BirthDate = dto.BirthDate,
+                Salary = dto.Salary,
+            };
+
+            _unitOfWork.TeacherRepository.Remove(teacher);
+            await _unitOfWork.CommitAsync();
+        }
     }
 }

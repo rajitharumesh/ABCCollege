@@ -1,5 +1,6 @@
 ﻿using Domain.Entities;
 using magnifinance.Dtos;
+using magnifinance.Services;
 using magnifinance.Services.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -29,6 +30,12 @@ namespace magnifinance.Controllers
         public async Task AddStudent([FromBody] StudentDto student)
         {
             await _studentService.AddStudent(student);
+        }
+
+        [HttpPost]
+        public async Task UpdateStudent([FromBody] StudentDto student)
+        {
+            await _studentService.UpdateStudent(student);
         }
     }
 }

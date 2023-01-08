@@ -39,8 +39,8 @@ namespace magnifinance.Controllers
             await _courseService.UpdateCourse(dto);
         }
 
-        [HttpDelete]
-        public Task Delete(int id)
+        [HttpDelete("{id}")]
+        public Task Delete([FromRoute] int id)
         {
             return _courseService.DeleteCourse(id);
         }

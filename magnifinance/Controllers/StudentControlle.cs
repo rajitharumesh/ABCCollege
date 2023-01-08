@@ -38,8 +38,8 @@ namespace magnifinance.Controllers
             await _studentService.UpdateStudent(student);
         }
 
-        [HttpDelete]
-        public Task Delete(int id)
+        [HttpDelete("{id}")]
+        public Task Delete([FromRoute] int id)
         {
             return _studentService.DeleteStudent(id);
         }

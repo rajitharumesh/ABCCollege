@@ -13,5 +13,15 @@ namespace Infrastructure.Repositories
         public SubjecttRepository(ABCCollegeDbContext dbContext) : base(dbContext)
         {
         }
+
+        public IEnumerable<Subject> GetSubjectsByCourseId(int courseId)
+        {
+            IEnumerable<Subject> subjects = (from d in _dbContext.Subjects
+                                             join dr in _dbContext.CourseSubjects on d.ID equals dr.SubjectID
+                                             where dr.CourseID == courseId
+                                             select d).AsEnumerable();
+            return subjects;
+        }
+
     }
 }

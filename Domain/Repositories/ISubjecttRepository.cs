@@ -9,5 +9,7 @@ namespace Domain.Repositories
 {
     public interface ISubjecttRepository : IGenericRepository<Subject>
     {
+        IEnumerable<Subject> GetSubjectsByCourseId(int courseId);
+
     }
 }

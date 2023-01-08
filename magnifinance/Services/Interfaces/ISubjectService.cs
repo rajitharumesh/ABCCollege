@@ -10,5 +10,6 @@ namespace magnifinance.Services.Interfaces
         public Task UpdateSubject(SubjectDto subject);
         public Task DeleteSubject(int id);
         public Subject GetOne(int id);
+        public IEnumerable<Subject> GetSubjectsByCourseId(int courseId);
     }
 }

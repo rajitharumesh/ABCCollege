@@ -16,11 +16,22 @@ namespace magnifinance.Services
 
         public async Task AddSubject(SubjectDto subjectDto)
         {
+
+
             var subject = new Subject
             {
                 Description = subjectDto.Description,
                 Name = subjectDto.Name,
             };
+
+            subject.CourseSubject = new List<CourseSubject>();
+
+            var courseSubject = new CourseSubject
+            {
+                CourseID = subjectDto.CourseId,
+                TeacherID = subjectDto.TeacherId,
+            };
+            subject.CourseSubject.Add(courseSubject);
 
             _unitOfWork.SubjecttRepository.Add(subject);
             await _unitOfWork.CommitAsync();
@@ -52,5 +63,19 @@ namespace magnifinance.Services
             Subject subject = _unitOfWork.SubjecttRepository.Get(exp);
             return subject;
         }
+
+        public async Task<IEnumerable<Subject>> GetAllById(int id)
+        {
+            Expression<Func<Subject, bool>> exp = (item) => item.ID == id;
+            IEnumerable<Subject> subjects = await _unitOfWork.SubjecttRepository.GetAllAsync(exp);
+            return subjects;
+        }
+
+        public IEnumerable<Subject> GetSubjectsByCourseId(int courseId)
+        {
+            IEnumerable<Subject> subjects = _unitOfWork.SubjecttRepository.GetSubjectsByCourseId(courseId);
+            return subjects;
+        }
+
     }
 }

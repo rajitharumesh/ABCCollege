@@ -3,6 +3,7 @@ using Domain.UnitOfWork;
 using magnifinance.Dtos;
 using magnifinance.Services.Interfaces;
 using Microsoft.AspNetCore.Cors.Infrastructure;
+using System.Linq.Expressions;
 
 namespace magnifinance.Services
 {
@@ -31,29 +32,26 @@ namespace magnifinance.Services
 
         public async Task UpdateCourse(CourseDto dto)
         {
-            var teacher = new Course
-            {
-                ID = dto.ID,
-                Description=dto.Description,
-                Title=dto.Title,
-            };
+            Course course = GetOne(dto.ID);
+            course.Description = dto.Description;
+            course.Title = dto.Title;
 
-            _unitOfWork.CourseRepository.Update(teacher);
+            _unitOfWork.CourseRepository.Update(course);
             await _unitOfWork.CommitAsync();
         }
 
-        public async Task DeleteCourse(CourseDto dto)
+        public async Task DeleteCourse(int id)
         {
-            var teacher = new Course
-            {
-                ID = dto.ID,
-                Description = dto.Description,
-                Title = dto.Title,
-            };
-
-            _unitOfWork.CourseRepository.Remove(teacher);
+            Course course = GetOne(id);
+            _unitOfWork.CourseRepository.Remove(course);
             await _unitOfWork.CommitAsync();
         }
 
+        public Course GetOne(int id)
+        {
+            Expression<Func<Course, bool>> exp = (item) => item.ID==id ;
+            Course course = _unitOfWork.CourseRepository.Get(exp);
+            return course;
+        }
     }
 }

@@ -37,5 +37,11 @@ namespace magnifinance.Controllers
         {
             await _teacherService.UpdateTeacher(dto);
         }
+
+        [HttpDelete]
+        public Task Delete(int id)
+        {
+            return _teacherService.DeleteTeacher(id);
+        }
     }
 }

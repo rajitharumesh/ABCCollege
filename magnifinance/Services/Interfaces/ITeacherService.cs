@@ -8,6 +8,7 @@ namespace magnifinance.Services.Interfaces
         public Task<IEnumerable<Teacher>> GetAll();
         public Task AddTeacher(TeacherDto teacher);
         public Task UpdateTeacher(TeacherDto dto);
-        public Task DeleteTeacher(TeacherDto dto);
+        public Task DeleteTeacher(int id);
+        public Teacher GetOne(int id);
     }
 }

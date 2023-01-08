@@ -2,6 +2,7 @@
 using Domain.UnitOfWork;
 using magnifinance.Dtos;
 using magnifinance.Services.Interfaces;
+using System.Linq.Expressions;
 
 namespace magnifinance.Services
 {
@@ -28,30 +29,28 @@ namespace magnifinance.Services
         public async Task<IEnumerable<Subject>> GetAll()
             => await _unitOfWork.SubjecttRepository.GetAllAsync();
 
-        public async Task UpdateSubject(SubjectDto subjectDto)
+        public async Task UpdateSubject(SubjectDto dto)
         {
-            var subject = new Subject
-            {
-                ID=subjectDto.ID,
-                Description = subjectDto.Description,
-                Name = subjectDto.Name,
-            };
+            Subject student = GetOne(dto.ID);
+            student.Description = dto.Description;
+            student.Name = dto.Name;
 
-            _unitOfWork.SubjecttRepository.Update(subject);
+            _unitOfWork.SubjecttRepository.Update(student);
             await _unitOfWork.CommitAsync();
         }
 
-        public async Task DeleteSubject(SubjectDto subjectDto)
+        public async Task DeleteSubject(int id)
         {
-            var subject = new Subject
-            {
-                ID = subjectDto.ID,
-                Description = subjectDto.Description,
-                Name = subjectDto.Name,
-            };
-
+            Subject subject = GetOne(id);
             _unitOfWork.SubjecttRepository.Remove(subject);
             await _unitOfWork.CommitAsync();
+        }
+
+        public Subject GetOne(int id)
+        {
+            Expression<Func<Subject, bool>> exp = (item) => item.ID == id;
+            Subject subject = _unitOfWork.SubjecttRepository.Get(exp);
+            return subject;
         }
     }
 }

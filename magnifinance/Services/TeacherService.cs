@@ -2,6 +2,7 @@
 using Domain.UnitOfWork;
 using magnifinance.Dtos;
 using magnifinance.Services.Interfaces;
+using System.Linq.Expressions;
 
 namespace magnifinance.Services
 {
@@ -32,32 +33,28 @@ namespace magnifinance.Services
 
         public async Task UpdateTeacher(TeacherDto dto)
         {
-            var teacher = new Teacher
-            {
-                ID = dto.ID,
-                FirstName = dto.FirstName,
-                LastName=dto.LastName,
-                BirthDate=dto.BirthDate,
-                Salary=dto.Salary,
-            };
-
+            Teacher teacher = GetOne(dto.ID);
+            teacher.FirstName = dto.FirstName;
+            teacher.LastName = dto.LastName;
+            teacher.BirthDate = dto.BirthDate;
+            teacher.Salary = dto.Salary;
+            
             _unitOfWork.TeacherRepository.Update(teacher);
             await _unitOfWork.CommitAsync();
         }
 
-        public async Task DeleteTeacher(TeacherDto dto)
+        public async Task DeleteTeacher(int id)
         {
-            var teacher = new Teacher
-            {
-                ID = dto.ID,
-                FirstName = dto.FirstName,
-                LastName = dto.LastName,
-                BirthDate = dto.BirthDate,
-                Salary = dto.Salary,
-            };
-
+            Teacher teacher = GetOne(id);
             _unitOfWork.TeacherRepository.Remove(teacher);
             await _unitOfWork.CommitAsync();
+        }
+
+        public Teacher GetOne(int id)
+        {
+            Expression<Func<Teacher, bool>> exp = (item) => item.ID == id;
+            Teacher teacher = _unitOfWork.TeacherRepository.Get(exp);
+            return teacher;
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Domain.Entities;
 using magnifinance.Dtos;
+using magnifinance.Services;
 using magnifinance.Services.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -35,6 +36,12 @@ namespace magnifinance.Controllers
         public async Task UpdateSubject([FromBody] SubjectDto subject)
         {
             await _subjectService.UpdateSubject(subject);
+        }
+
+        [HttpDelete]
+        public Task Delete(int id)
+        {
+            return _subjectService.DeleteSubject(id);
         }
     }
 }

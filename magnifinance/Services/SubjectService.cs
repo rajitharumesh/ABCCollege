@@ -1,4 +1,5 @@
-﻿using Domain.Entities;
+﻿using Domain.Dtos;
+using Domain.Entities;
 using Domain.UnitOfWork;
 using magnifinance.Dtos;
 using magnifinance.Services.Interfaces;
@@ -76,6 +77,10 @@ namespace magnifinance.Services
             IEnumerable<Subject> subjects = _unitOfWork.SubjecttRepository.GetSubjectsByCourseId(courseId);
             return subjects;
         }
-
+        public IEnumerable<CourseSubjectDto> GetAllSubjectDetails()
+        {
+            IEnumerable<CourseSubjectDto> subjects = _unitOfWork.SubjecttRepository.GetAllSubjectDetails();
+            return subjects;
+        }
     }
 }

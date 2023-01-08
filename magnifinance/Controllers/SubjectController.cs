@@ -1,4 +1,5 @@
-﻿using Domain.Entities;
+﻿using Domain.Dtos;
+using Domain.Entities;
 using magnifinance.Dtos;
 using magnifinance.Services;
 using magnifinance.Services.Interfaces;
@@ -19,11 +20,11 @@ namespace magnifinance.Controllers
         }
 
 
-        [HttpGet]
-        public Task<IEnumerable<Subject>> Get()
-        {
-            return _subjectService.GetAll();
-        }
+        //[HttpGet]
+        //public Task<IEnumerable<Subject>> Get()
+        //{
+        //    return _subjectService.GetAll();
+        //}
 
 
         [HttpPost]
@@ -54,6 +55,12 @@ namespace magnifinance.Controllers
         public IEnumerable<Subject> GetSubjectsByCourseId([FromRoute] int id)
         {
             return _subjectService.GetSubjectsByCourseId(id);
+        }
+
+        [HttpGet]
+        public IEnumerable<CourseSubjectDto> GetAllSubjectDetails()
+        {
+            return _subjectService.GetAllSubjectDetails();
         }
     }
 }

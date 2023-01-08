@@ -1,4 +1,5 @@
-﻿using Domain.Entities;
+﻿using Domain.Dtos;
+using Domain.Entities;
 using magnifinance.Dtos;
 
 namespace magnifinance.Services.Interfaces
@@ -11,5 +12,6 @@ namespace magnifinance.Services.Interfaces
         public Task DeleteSubject(int id);
         public Subject GetOne(int id);
         public IEnumerable<Subject> GetSubjectsByCourseId(int courseId);
+        public IEnumerable<CourseSubjectDto> GetAllSubjectDetails();
     }
 }

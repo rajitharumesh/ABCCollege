@@ -1,4 +1,5 @@
-﻿using Domain.Entities;
+﻿using Domain.Dtos;
+using Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,7 @@ namespace Domain.Repositories
     public interface ISubjecttRepository : IGenericRepository<Subject>
     {
         IEnumerable<Subject> GetSubjectsByCourseId(int courseId);
+        IEnumerable<CourseSubjectDto> GetAllSubjectDetails();
 
     }
 }

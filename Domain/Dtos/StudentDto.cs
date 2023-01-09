@@ -22,5 +22,7 @@ namespace Domain.Dtos
         public int? CourseID { get; set; }
         public int? SubjectID { get; set; }
         public int? TeacherID { get; set; }
+        public int? CourseSubjectID { get; set; }
+        public int? Grade { get; set; }
     }
 }

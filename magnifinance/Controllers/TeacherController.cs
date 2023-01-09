@@ -43,5 +43,11 @@ namespace magnifinance.Controllers
         {
             return _teacherService.DeleteTeacher(id);
         }
+
+        [HttpGet("{subjectId}")]
+        public IEnumerable<Teacher> GetTeacherBySubjectId([FromRoute] int subjectId)
+        {
+            return _teacherService.GetTeacherBySubjectId(subjectId);
+        }
     }
 }

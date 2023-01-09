@@ -6,7 +6,9 @@
         public string RegistrationNo { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public double Grade { get; set; }
         public DateTime BirthDate { get; set; }
         public DateTime EnrollmentDate { get; set; }
+        public int CourseSubjectID { get; set; }
     }
 }

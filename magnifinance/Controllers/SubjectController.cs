@@ -20,13 +20,6 @@ namespace magnifinance.Controllers
         }
 
 
-        //[HttpGet]
-        //public Task<IEnumerable<Subject>> Get()
-        //{
-        //    return _subjectService.GetAll();
-        //}
-
-
         [HttpPost]
         public async Task AddSubject([FromBody] SubjectDto subject)
         {

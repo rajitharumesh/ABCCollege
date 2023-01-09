@@ -56,5 +56,11 @@ namespace magnifinance.Services
             Teacher teacher = _unitOfWork.TeacherRepository.Get(exp);
             return teacher;
         }
+
+        public IEnumerable<Teacher> GetTeacherBySubjectId(int subjectId)
+        {
+            IEnumerable<Teacher> teacher = _unitOfWork.TeacherRepository.GetTeacherBySubjectId(subjectId);
+            return teacher;
+        }
     }
 }

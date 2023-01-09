@@ -10,5 +10,6 @@ namespace magnifinance.Services.Interfaces
         public Task UpdateTeacher(TeacherDto dto);
         public Task DeleteTeacher(int id);
         public Teacher GetOne(int id);
+        public IEnumerable<Teacher> GetTeacherBySubjectId(int subjectId);
     }
 }

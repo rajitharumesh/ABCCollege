@@ -51,6 +51,8 @@ namespace Infrastructure.Repositories
                               CourseDescription = (string?)courseObj.Description,
                               TeacherName = (string?)teacherObj.FirstName + " " + (string?)teacherObj.LastName,
                               CourseTitle = (string?)courseObj.Title,
+                              CourseSubjectID=courseObj.ID,
+                              Grade= (int?)studentEnrolment.Grade
                           }).AsEnumerable();
             return result;
         }

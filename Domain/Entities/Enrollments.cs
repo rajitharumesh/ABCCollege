@@ -13,8 +13,8 @@ namespace Domain.Entities
         public int ID { get; set; }
         public int CourseSubjectID { get; set; }
         public int StudentID { get; set; }
-        public Double Grade { get; set; }
-        public virtual CourseSubject Course { get; set; }
-        public virtual Student Student { get; set; }
+        public double Grade { get; set; }
+        public virtual CourseSubject? Course { get; set; }
+        public virtual Student? Student { get; set; }
     }
 }

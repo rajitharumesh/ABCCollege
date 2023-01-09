@@ -25,6 +25,17 @@ namespace magnifinance.Services
              EnrollmentDate = studentDto.EnrollmentDate
             };
 
+            student.Enrollments = new List<Enrollments>();
+
+            var enrollments = new Enrollments
+            {
+                StudentID = studentDto.ID,
+                CourseSubjectID = studentDto.CourseSubjectID,
+                Grade= studentDto.Grade
+            };
+            student.Enrollments.Add(enrollments);
+
+
             _unitOfWork.StudentRepository.Add(student);
             await _unitOfWork.CommitAsync();
         }

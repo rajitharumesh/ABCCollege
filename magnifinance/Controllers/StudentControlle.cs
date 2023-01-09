@@ -20,9 +20,9 @@ namespace magnifinance.Controllers
 
 
         [HttpGet]
-        public Task<IEnumerable<Student>> Get()
+        public IEnumerable<Domain.Dtos.StudentDto> Get()
         {
-            return _studentService.GetAll();
+            return _studentService.GetAllStudents();
         }
 
 

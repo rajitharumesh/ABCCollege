@@ -49,6 +49,10 @@ namespace Infrastructure.Repositories
                          CourseDescription = (string?)courseObj.Description,
                          TeacherName = (string?)teacherObj.FirstName + " " + (string?)teacherObj.LastName,
                          CourseTitle = (string?)courseObj.Title,
+                         LastName = (string?)teacherObj.LastName,
+                         FirstName = (string?)teacherObj.FirstName,
+                         BirthDate=(DateTime)teacherObj.BirthDate,
+                         Salary=(Double)teacherObj.Salary,
                      }).AsEnumerable();
             return result;
         }

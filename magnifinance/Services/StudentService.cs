@@ -58,5 +58,12 @@ namespace magnifinance.Services
             Student student = _unitOfWork.StudentRepository.Get(exp);
             return student;
         }
+
+        public IEnumerable<Domain.Dtos.StudentDto> GetAllStudents()
+        {
+            IEnumerable<Domain.Dtos.StudentDto> students = _unitOfWork.StudentRepository.GetAllStudents();
+            return students;
+
+        }
     }
 }

@@ -16,6 +16,6 @@ namespace Domain.Entities
         public DateTime BirthDate { get; set; }
         public Double Salary { get; set; }
 
-        public virtual ICollection<CourseSubject> CourseSubject { get; set; }
+        public virtual ICollection<CourseSubject>? CourseSubject { get; set; }
     }
 }

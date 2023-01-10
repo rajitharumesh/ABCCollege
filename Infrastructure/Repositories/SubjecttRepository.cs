@@ -1,6 +1,7 @@
 ﻿using Domain.Dtos;
 using Domain.Entities;
 using Domain.Repositories;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,32 +30,43 @@ namespace Infrastructure.Repositories
         {
             var result = (from sub in _dbContext.Subjects
                           join couSub in _dbContext.CourseSubjects on sub.ID equals couSub.SubjectID into dayDelvs
-                     from courseSub in dayDelvs.DefaultIfEmpty()
+                          from courseSub in dayDelvs.DefaultIfEmpty()
 
-                     join cou in _dbContext.Courses on courseSub.CourseID equals cou.ID into course
-                     from courseObj in course.DefaultIfEmpty()
+                          join cou in _dbContext.Courses on courseSub.CourseID equals cou.ID into course
+                          from courseObj in course.DefaultIfEmpty()
 
-                     join tea in _dbContext.Teachers on courseSub.TeacherID equals tea.ID into teacher
-                     from teacherObj in teacher.DefaultIfEmpty()
+                          join tea in _dbContext.Teachers on courseSub.TeacherID equals tea.ID into teacher
+                          from teacherObj in teacher.DefaultIfEmpty()
 
 
-                     select new CourseSubjectDto()
-                     {
-                         ID = sub.ID,
-                         Name = sub.Name,
-                         Description = sub.Description,
-                         CourseID = (int?)courseSub.CourseID,
-                         SubjectID = (int?)courseSub.SubjectID,
-                         TeacherID = (int?)courseSub.TeacherID,
-                         CourseDescription = (string?)courseObj.Description,
-                         TeacherName = (string?)teacherObj.FirstName + " " + (string?)teacherObj.LastName,
-                         CourseTitle = (string?)courseObj.Title,
-                         LastName = (string?)teacherObj.LastName,
-                         FirstName = (string?)teacherObj.FirstName,
-                         BirthDate=(DateTime)teacherObj.BirthDate,
-                         Salary=(Double)teacherObj.Salary,
-                     }).AsEnumerable();
+                          select new CourseSubjectDto()
+                          {
+                              ID = sub.ID,
+                              Name = sub.Name,
+                              Description = sub.Description,
+                              CourseID = (int?)courseSub.CourseID,
+                              SubjectID = (int?)courseSub.SubjectID,
+                              TeacherID = (int?)courseSub.TeacherID,
+                              CourseDescription = (string?)courseObj.Description,
+                              TeacherName = (string?)teacherObj.FirstName + " " + (string?)teacherObj.LastName,
+                              CourseTitle = (string?)courseObj.Title,
+                              LastName = (string?)teacherObj.LastName,
+                              FirstName = (string?)teacherObj.FirstName,
+                              BirthDate = (DateTime)teacherObj.BirthDate,
+                              Salary = (Double)teacherObj.Salary,
+                          }).AsEnumerable();
             return result;
+        }
+
+        public Subject GetSubject(int subjectId)
+        {
+            Subject? subjects = (from d in _dbContext.Subjects.Include(d => d.CourseSubject)
+                                join dr in _dbContext.CourseSubjects on d.ID equals dr.SubjectID into subj
+                                 from courseSub in subj.DefaultIfEmpty()
+                                 where d.ID == subjectId
+
+                                select d).FirstOrDefault();
+            return subjects;
         }
     }
 }

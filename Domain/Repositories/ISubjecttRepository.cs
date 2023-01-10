@@ -12,6 +12,7 @@ namespace Domain.Repositories
     {
         IEnumerable<Subject> GetSubjectsByCourseId(int courseId);
         IEnumerable<CourseSubjectDto> GetAllSubjectDetails();
+        Subject GetSubject(int subjectId);
 
     }
 }

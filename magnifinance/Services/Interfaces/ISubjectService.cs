@@ -13,5 +13,6 @@ namespace magnifinance.Services.Interfaces
         public Subject GetOne(int id);
         public IEnumerable<Subject> GetSubjectsByCourseId(int courseId);
         public IEnumerable<CourseSubjectDto> GetAllSubjectDetails();
+        public Subject GetSubject(int subjectId);
     }
 }

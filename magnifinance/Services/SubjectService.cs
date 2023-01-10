@@ -43,11 +43,30 @@ namespace magnifinance.Services
 
         public async Task UpdateSubject(SubjectDto dto)
         {
-            Subject student = GetOne(dto.ID);
-            student.Description = dto.Description;
-            student.Name = dto.Name;
 
-            _unitOfWork.SubjecttRepository.Update(student);
+            Subject subject = _unitOfWork.SubjecttRepository.GetSubject(dto.ID);
+
+            subject.Description = dto.Description;
+            subject.Name = dto.Name;
+
+            if (subject.CourseSubject!=null && subject.CourseSubject.Count > 0)
+            {
+                var courseSubject = subject.CourseSubject.ToList();
+                courseSubject[0].SubjectID=dto.ID;
+                courseSubject[0].CourseID=dto.CourseId;
+                courseSubject[0].TeacherID = dto.TeacherId;
+            } else
+            {
+                subject.CourseSubject = new List<CourseSubject>();
+                var courseSubject = new CourseSubject
+                {
+                    CourseID = dto.CourseId,
+                    TeacherID = dto.TeacherId,
+                };
+                subject.CourseSubject.Add(courseSubject);
+            }
+
+            _unitOfWork.SubjecttRepository.Update(subject);
             await _unitOfWork.CommitAsync();
         }
 
@@ -82,5 +101,15 @@ namespace magnifinance.Services
             IEnumerable<CourseSubjectDto> subjects = _unitOfWork.SubjecttRepository.GetAllSubjectDetails();
             return subjects;
         }
+
+        public Subject GetSubject(int subjectId)
+        {
+            throw new NotImplementedException();
+        }
+
+        //public Subject GetSubject(int subjectId)
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }

@@ -13,7 +13,6 @@ namespace Domain.Dtos
         public string? LastName { get; set; }
         public string? Name { get; set; }
         public string? CourseDescription { get; set; }
-        public string? TeacherName { get; set; }
         public string? CourseTitle { get; set; }
         public string? StudentId { get; set; }
         public string? RegistrationNo { get; set; }
@@ -21,7 +20,9 @@ namespace Domain.Dtos
         public DateTime EnrollmentDate { get; set; }
         public int? CourseID { get; set; }
         public int? SubjectID { get; set; }
+        public string? SubjectName { get; set; }
         public int? TeacherID { get; set; }
+        public string? TeacherName { get; set; }
         public int? CourseSubjectID { get; set; }
         public int? Grade { get; set; }
     }

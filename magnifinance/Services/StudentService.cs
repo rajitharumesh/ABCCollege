@@ -70,11 +70,35 @@ namespace magnifinance.Services
             return student;
         }
 
+        public IEnumerable<Domain.Dtos.StudentDto> GetStudentList()
+        {
+            IEnumerable<Domain.Dtos.StudentDto> students = _unitOfWork.StudentRepository.GetStudentList();
+            return students;
+        }
+
         public IEnumerable<Domain.Dtos.StudentDto> GetAllStudents()
         {
             IEnumerable<Domain.Dtos.StudentDto> students = _unitOfWork.StudentRepository.GetAllStudents();
             return students;
+        }
 
+        public IEnumerable<Domain.Dtos.StudentDto> GetSubjectsByCourseId()
+        {
+            IEnumerable<Domain.Dtos.StudentDto> students = _unitOfWork.StudentRepository.GetSubjectsByCourseId();
+            return students;
+        }
+
+        public Task UpdateStudentMapping(Domain.Dtos.CourseSubjectDto dto)
+        {
+            _unitOfWork.StudentRepository.AddStudentMapping(dto);
+            return _unitOfWork.CommitAsync();
+        }
+
+
+        public Task AddStudentMapping(Domain.Dtos.CourseSubjectDto dto)
+        {
+            _unitOfWork.StudentRepository.AddStudentMapping(dto);
+            return _unitOfWork.CommitAsync();
         }
     }
 }

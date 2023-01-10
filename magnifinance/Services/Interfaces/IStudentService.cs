@@ -10,6 +10,10 @@ namespace magnifinance.Services.Interfaces
         public Task UpdateStudent(StudentDto dto);
         public Task DeleteStudent(int id);
         public Student GetOne(int id);
+        public IEnumerable<Domain.Dtos.StudentDto> GetStudentList();
         public IEnumerable<Domain.Dtos.StudentDto> GetAllStudents();
+        public IEnumerable<Domain.Dtos.StudentDto> GetSubjectsByCourseId();
+        public Task UpdateStudentMapping(Domain.Dtos.CourseSubjectDto dto);
+        public Task AddStudentMapping(Domain.Dtos.CourseSubjectDto dto);
     }
 }

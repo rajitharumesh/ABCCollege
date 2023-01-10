@@ -1,9 +1,11 @@
-﻿using Domain.Entities;
+﻿using Domain.Dtos;
+using Domain.Entities;
 using magnifinance.Dtos;
 using magnifinance.Services;
 using magnifinance.Services.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using StudentDto = magnifinance.Dtos.StudentDto;
 
 namespace magnifinance.Controllers
 {
@@ -22,7 +24,7 @@ namespace magnifinance.Controllers
         [HttpGet]
         public IEnumerable<Domain.Dtos.StudentDto> Get()
         {
-            return _studentService.GetAllStudents();
+            return _studentService.GetStudentList();
         }
 
 
@@ -42,6 +44,25 @@ namespace magnifinance.Controllers
         public Task Delete([FromRoute] int id)
         {
             return _studentService.DeleteStudent(id);
+        }
+
+        [HttpGet("details")]
+        public IEnumerable<Domain.Dtos.StudentDto> GetAllStudents()
+        {
+            return _studentService.GetSubjectsByCourseId();
+        }
+
+        // student mapping
+        [HttpPost("mapping")]
+        public async Task AddStudentMapping([FromBody] Domain.Dtos.CourseSubjectDto student)
+        {
+            await _studentService.AddStudentMapping(student);
+        }
+
+        [HttpPut("mapping")]
+        public async Task UpdateStudentMapping([FromBody] Domain.Dtos.CourseSubjectDto student)
+        {
+            await _studentService.UpdateStudentMapping(student);
         }
     }
 }

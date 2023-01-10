@@ -106,10 +106,5 @@ namespace magnifinance.Services
         {
             throw new NotImplementedException();
         }
-
-        //public Subject GetSubject(int subjectId)
-        //{
-        //    throw new NotImplementedException();
-        //}
     }
 }

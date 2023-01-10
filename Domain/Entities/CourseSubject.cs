@@ -16,10 +16,10 @@ namespace Domain.Entities
         public int SubjectID { get; set; }
         public int TeacherID { get; set; }
 
-        public virtual Course Course { get; set; } // 2023 - AL
-        public virtual Subject Subject { get; set; }// Maths
-        public virtual Teacher Teacher { get; set; } // Amila
+        public virtual Course? Course { get; set; } // 2023 - AL
+        public virtual Subject? Subject { get; set; }// Maths
+        public virtual Teacher? Teacher { get; set; } // Amila
 
-        public virtual ICollection<Enrollments> Enrollments { get; set; }
+        public virtual ICollection<Enrollments>? Enrollments { get; set; }
     }
 }

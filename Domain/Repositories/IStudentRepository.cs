@@ -11,5 +11,9 @@ namespace Domain.Repositories
     public interface IStudentRepository : IGenericRepository<Student>
     {
         IEnumerable<StudentDto> GetAllStudents();
+        IEnumerable<StudentDto> GetStudentList();
+        IEnumerable<StudentDto> GetSubjectsByCourseId();
+        int UpdateStudentMapping(Domain.Dtos.CourseSubjectDto dto);
+        int AddStudentMapping(Domain.Dtos.CourseSubjectDto dto);
     }
 }

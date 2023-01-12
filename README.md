@@ -19,7 +19,8 @@ Restore the NuGet packages by rebuilding the solution.
 # Database 
 Create database in Sql Server Object Explorar as ABCCollege
 
-# Open the Package Manager Console from the menu Tools -> NuGet Package Manager -> Package Manager Console in Visual Studio and execute the following command to add a migration.
+# Migration
+Open the Package Manager Console from the menu Tools -> NuGet Package Manager -> Package Manager Console in Visual Studio and execute the following command to add a migration.
 
 Step 1:  dotnet ef migrations add MyFirstMigration
 Step 2: Update-Database

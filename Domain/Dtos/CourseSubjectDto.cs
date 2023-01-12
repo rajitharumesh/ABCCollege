@@ -8,7 +8,7 @@ namespace Domain.Dtos
 {
     public class CourseSubjectDto
     {
-        public int ID { get; set; }
+        public int? ID { get; set; }
         public string? Name { get; set; }
         public string? Description { get; set; }
         public string? CourseDescription { get; set; }
@@ -19,6 +19,8 @@ namespace Domain.Dtos
         public int? CourseID { get; set; }
         public int? SubjectID { get; set; }
         public int? TeacherID { get; set; }
+        public int? StudentID { get; set; }
+        public int? CourseSubjectID { get; set; }
         public DateTime? BirthDate { get; set; }
         public Double? Salary { get; set; }
     }

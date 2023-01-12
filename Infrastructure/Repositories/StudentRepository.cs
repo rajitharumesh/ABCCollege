@@ -19,11 +19,49 @@ namespace Infrastructure.Repositories
 
         public int AddStudentMapping(Domain.Dtos.CourseSubjectDto dto)
         {
-            //_dbContext.CourseSubjects.Add(dto);
-            //int dd = _dbContext.SaveChanges();
-            //Enrollments en = new Enrollments();
-            //en.CourseSubjectID = dd;
-            //en.StudentID = dto.s
+            CourseSubject result = getCourseSubjectById(dto);
+            if (result !=null && result.ID!=0)
+            {
+                if (result?.Enrollments?.Count >0)
+                {
+                    bool isExist = false;
+                    foreach (var item in result?.Enrollments)
+                    {
+                        if (item.CourseSubjectID == dto.CourseSubjectID && item.StudentID == dto.StudentID)
+                        {
+                            isExist = true;
+                        }
+                    }
+                    if (!isExist)
+                    {
+                        if (result.Enrollments.Count <1)
+                        {
+                            result.Enrollments = new List<Enrollments>();
+                        }
+                        
+                        var enrol = new Enrollments();
+                        enrol.StudentID = (int)dto.StudentID;
+                        enrol.CourseSubjectID = result.ID;
+                        result.Enrollments.Add(enrol);
+                        _dbContext.CourseSubjects.Update(result);
+
+                    }
+                }
+                
+            } else
+            {
+                result = new CourseSubject();
+                result.CourseID = (int)dto.CourseID;
+                result.SubjectID = (int)dto.SubjectID;
+                result.TeacherID = (int)dto.TeacherID;
+
+                result.Enrollments = new List<Enrollments>();
+                var enrol = new Enrollments();
+                enrol.StudentID = (int)dto.StudentID;
+                result.Enrollments.Add(enrol);
+                _dbContext.CourseSubjects.Add(result);
+
+            }
             return _dbContext.SaveChanges();
         }
 
@@ -113,7 +151,7 @@ namespace Infrastructure.Repositories
                                                     CourseTitle = (string?)c.Title,
                                                     CourseSubjectID = d.ID,
                                                     Grade = (int?)e.Grade,
-                                                    SubjectName = s.Name
+                                                    SubjectName = s.Name,
                                                 }
                                              ).AsEnumerable();
             return subjects;
@@ -121,18 +159,34 @@ namespace Infrastructure.Repositories
 
         public int UpdateStudentMapping(Domain.Dtos.CourseSubjectDto dto)
         {
-            //CourseSubject csa=new CourseSubject();
-            //dto.CourseID = dto.CourseID;
-            //dto.SubjectID = dto.SubjectID;
-            //dto.TeacherID = dto.TeacherID;
-            //dto.ID = dto.ID;
+            CourseSubject result = getCourseSubjectById(dto);
+            if (result.ID == 0)
+            {
+                result.CourseID = (int)dto.CourseID;
+                result.SubjectID = (int)dto.SubjectID;
+                result.TeacherID = (int)dto.TeacherID;
 
-            //CourseSubject? cs = _dbContext.CourseSubjects.Find(csa);
-            //if (cs != null)
-            //{
-            //    _dbContext.CourseSubjects.Update(csa);
-            //}
+                if (result.Enrollments != null)
+                {
+                    result.Enrollments = new List<Enrollments>();
+                    var item = new Enrollments();
+                    item.CourseSubjectID = result.ID;
+                    item.StudentID = (int)dto.ID;
+                }
+            }
+            _dbContext.CourseSubjects.Update(result);
             return _dbContext.SaveChanges();
+
+        }
+
+        public CourseSubject getCourseSubjectById(Domain.Dtos.CourseSubjectDto dto)
+        {
+            var result = (from courseSubject in _dbContext.CourseSubjects.Include(d => d.Enrollments)
+                          join dr in _dbContext.Enrollments on courseSubject.ID equals dr.CourseSubjectID into cs
+                          from courseSub in cs.DefaultIfEmpty()
+                          select courseSubject
+                          ).FirstOrDefault();
+            return result;
 
         }
     }

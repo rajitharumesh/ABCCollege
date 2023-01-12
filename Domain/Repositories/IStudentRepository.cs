@@ -15,5 +15,6 @@ namespace Domain.Repositories
         IEnumerable<StudentDto> GetSubjectsByCourseId();
         int UpdateStudentMapping(Domain.Dtos.CourseSubjectDto dto);
         int AddStudentMapping(Domain.Dtos.CourseSubjectDto dto);
+        CourseSubject getCourseSubjectById(Domain.Dtos.CourseSubjectDto dto);
     }
 }
